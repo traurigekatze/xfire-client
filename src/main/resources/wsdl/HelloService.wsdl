@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://test/HelloServie" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://test/HelloServie" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding">
+  <wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://test/HelloServie">
+<xsd:element name="add">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:int"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="addResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getAll">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getAllResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getInfo">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getInfoResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="addRequest">
+    <wsdl:part name="parameters" element="tns:add">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInfoResponse">
+    <wsdl:part name="parameters" element="tns:getInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addResponse">
+    <wsdl:part name="parameters" element="tns:addResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllResponse">
+    <wsdl:part name="parameters" element="tns:getAllResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInfoRequest">
+    <wsdl:part name="parameters" element="tns:getInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllRequest">
+    <wsdl:part name="parameters" element="tns:getAll">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HelloServicePortType">
+    <wsdl:operation name="add">
+      <wsdl:input name="addRequest" message="tns:addRequest">
+    </wsdl:input>
+      <wsdl:output name="addResponse" message="tns:addResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAll">
+      <wsdl:input name="getAllRequest" message="tns:getAllRequest">
+    </wsdl:input>
+      <wsdl:output name="getAllResponse" message="tns:getAllResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfo">
+      <wsdl:input name="getInfoRequest" message="tns:getInfoRequest">
+    </wsdl:input>
+      <wsdl:output name="getInfoResponse" message="tns:getInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HelloServiceHttpBinding" type="tns:HelloServicePortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="add">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="addRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAll">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAllRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfo">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getInfoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInfoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloService">
+    <wsdl:port name="HelloServiceHttpPort" binding="tns:HelloServiceHttpBinding">
+      <wsdlsoap:address location="http://172.16.102.83:8080/xfire-web/servlet/xfire-servlet/HelloService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

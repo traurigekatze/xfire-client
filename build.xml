@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="createClientFile" basedir=".">
+
+    <!-- 指定lib 路径-->
+    <property name="lib" value="${basedir}/lib" />
+    <!-- 将lib 引入到classpath-->
+    <path id="myclasspath">
+        <fileset dir="${lib}">
+            <include name="*.jar" />
+        </fileset>
+        <pathelement location="${createClientFile}" />
+    </path>
+
+    <!--指定源文件根目录-->
+    <property name="code_path" value="${basedir}/src" />
+
+    <!--指定webservice地址-->
+    <property name="wsdl_path" value="http://kslist.cn:6443/xfire-web/servlet/xfire-servlet/HelloService?wsdl" />
+
+    <!--生成文件的存放目录-->
+    <property name="code_package" value="com.kerry.xfireclient.client" />
+
+    <!--建立target-->
+    <target name="createClientFile" description="建立WebService客户端文件">
+        <taskdef name="getWebService" classname="org.codehaus.xfire.gen.WsGenTask" classpathref="myclasspath" />
+        <getWebService outputDirectory="${code_path}" wsdl="${wsdl_path}" package="${code_package}" binding="xmlbeans" overwrite="true" />
+    </target>
+
+</project>

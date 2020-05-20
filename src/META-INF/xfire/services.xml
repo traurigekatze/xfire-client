@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+  <service>
+    <serviceClass>com.kerry.xfireclient.client.HelloServiceImpl</serviceClass>
+    <wsdlURL>http://kslist.cn:6443/xfire-web/servlet/xfire-servlet/HelloService?wsdl</wsdlURL>
+    <serviceFactory>#xmlbeansServiceFactory</serviceFactory>
+  </service>
+</beans>
+
